@@ -37,6 +37,10 @@ The following table lists the main definitions and proved results underlying the
 | Fiber Hamiltonian, self-adjointness and domain | Definitions + theorems | `fiberFormData`, `fiberHamiltonian`, `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`GW06.lean`](Froehlich/Nodes/GW06.lean) |
 | Spectrum, ground-state energy and eigenvectors | Definitions | `realSpectrum`, `groundEnergy`, `HasEigenvector` | [`DF01.lean`](Froehlich/Nodes/DF01.lean) |
 
+The precise statement of the main theorem is defined in [`TargetContract.lean`](Froehlich/TargetContract.lean) and proved for the constructed Fröhlich fiber Hamiltonian in [`MN03.lean`](Froehlich/Nodes/MN03.lean). The construction of the Hamiltonian and the definitions of the spectral quantities are implemented in the files listed above.
+
+A detailed mathematical account of the proofs, including the modifications made for formal verification, is provided in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf).
+
 For further details on the mathematical interpretation and scope, see [`docs/STATEMENT_GUIDE.md`](docs/STATEMENT_GUIDE.md).
 
 ## Verify
