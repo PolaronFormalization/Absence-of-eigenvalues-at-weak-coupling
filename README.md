@@ -19,7 +19,7 @@ The theorem establishes the existence of a constant `g_* > 0` such that, for eve
 
    `σ(H_g(P)) ∩ (-∞, E_g(0) + 1) = {E_g(P)}`.
 
-2. **Ground-state existence:** There exists a nonzero `ψ ∈ D(H_g(P))` satisfying
+2. **Existence of a ground-state:** There exists a nonzero `ψ ∈ D(H_g(P))` satisfying
 
    `H_g(P)ψ = E_g(P)ψ`.
 
