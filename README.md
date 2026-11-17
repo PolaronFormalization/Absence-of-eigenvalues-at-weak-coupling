@@ -37,21 +37,22 @@ The following table lists the main definitions and proved results underlying the
 | Fiber Hamiltonian, self-adjointness and domain | Definitions + theorems | `fiberFormData`, `fiberHamiltonian`, `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`GW06.lean`](Froehlich/Nodes/GW06.lean) |
 | Spectrum, ground-state energy and eigenvectors | Definitions | `realSpectrum`, `groundEnergy`, `HasEigenvector` | [`DF01.lean`](Froehlich/Nodes/DF01.lean) |
 
-Notes: 
 
-The precise statement of the main theorem is defined in [`TargetContract.lean`](Froehlich/TargetContract.lean) and proved for the constructed Fröhlich fiber Hamiltonian in [`MN03.lean`](Froehlich/Nodes/MN03.lean).
+## How to read the formalization
 
-The declaration Froehlich.MainStatement in Froehlich/TargetContract.lean is parameterized by a family of complex-linear, possibly unbounded operators H. It states that there exists gStar > 0 such that for every g : ℝ and P : GW.Space, the conditions |g| < gStar and ‖P‖ ≤ 1/4 imply both:
+The precise statement of the main theorem is defined in [`TargetContract.lean`](Froehlich/TargetContract.lean) as `Froehlich.MainStatement`, parameterized by a family of operators `H`. The theorem [`Froehlich.main`](Froehlich/Nodes/MN03.lean) proves `MainStatement fiberHamiltonian`, where `fiberHamiltonian` is the constructed Fröhlich fiber Hamiltonian. Here `GW.Space` denotes Euclidean `ℝ³`, and `GW.Fock.Carrier` the bosonic Fock space.
 
-    realSpectrum (H g P) ∩ Set.Iio (groundEnergy (H g 0) + 1) = {groundEnergy (H g P)};
-    HasEigenvector (H g P) (groundEnergy (H g P)).
+The definitions `realSpectrum`, `groundEnergy`, and `HasEigenvector` are implemented in [`DF01.lean`](Froehlich/Nodes/DF01.lean). The spectrum is defined through the resolvent set, the ground-state energy as the infimum of the spectrum, and the eigenvector predicate requires a nonzero vector in the operator domain satisfying the eigenvalue equation.
 
-The theorem Froehlich.main : MainStatement fiberHamiltonian in Froehlich/Nodes/MN03.lean supplies the constructed physical operator family as the parameter. GW.Space is Euclidean ℝ³, and GW.Fock.Carrier is the bosonic Fock space.
+### Construction of the fiber Hamiltonian
 
-realSpectrum is defined from the existence of an appropriate bounded two-sided resolvent inverse, groundEnergy is the infimum of this real spectrum, and HasEigenvector asserts the existence of a nonzero vector in the operator domain satisfying the eigenvalue equation. These are implemented in Froehlich/Nodes/DF01.lean.
-Why the fiber operator is concrete
+The construction of the fiber Hamiltonian is part of the formalization. The Fröhlich form factor `fiberFormFactor g k = g / ‖k‖` is not square-integrable, so the interaction cannot be defined directly as an ordinary field operator.
 
-The formal form factor of the Hamiltonian is fiberFormFactor g k = g / ‖k‖. The uncut form factor is not square-integrable, so ordinary field-operator construction is not available. Instead the proof defines UV-cutoff form factors and bounded cutoff interaction forms, proves their Cauchy convergence on the free-energy form space, and defines the limit singularInteraction (Froehlich/Nodes/FB02A.lean). The fiber form data (Froehlich/Nodes/GW06.lean) package the closed, semibounded quadratic form and construct the associated self-adjoint operator as fiberHamiltonian using the retained Griesemer–Wünsch functional-analytic infrastructure. The fiberHamiltonian_domain theorem expresses the abstract form-identity characterization; no Gross-transform domain formula for these momentum fibers is claimed.
+Instead, the development introduces ultraviolet-cutoff form factors and the corresponding interaction forms, proves their convergence on the free-energy form space, and defines the limiting singular interaction `singularInteraction` in [`FB02A.lean`](Froehlich/Nodes/FB02A.lean).
+
+The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. It reuses functional-analytic machinery from their separately formalized results, included here in [`GW/`](GW/), while the fiber Hamiltonians themselves are constructed in the present development.
+
+The operator domain is characterized through the abstract quadratic-form identity; no explicit Gross-transform domain characterization for the fiber Hamiltonians is claimed.
 
 ## How to verify
 
