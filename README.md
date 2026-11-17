@@ -1,45 +1,45 @@
+
 # Lean formalization of the absence of excited eigenvalues for the Fröhlich polaron at weak coupling
 
-A Lean 4 formalization of a spectral result for the three-dimensional Fröhlich fiber Hamiltonian, based on the works
+A Lean 4 / Mathlib formalization of the main results from
 
->D. Mitrouskas, Absence of Excited Bound States for All Fibers of the Fröhlich Polaron at Weak Coupling, arXiv:2611.09586.
+> D. Mitrouskas, *Absence of Excited Bound States for All Fibers of the Fröhlich Polaron at Weak Coupling*, [arXiv:2611.09586](https://arxiv.org/abs/2611.09586).
 
-and
+> R. Seiringer, *Absence of excited eigenvalues for Fröhlich type polaron models at weak coupling*, [arXiv:2210.17123](https://arxiv.org/abs/2210.17123), J. Spectr. Theory **13** (2023), 1045–1055.
 
->R. Seiringer, Absence of excited eigenvalues for Fröhlich type polaron models at weak coupling, arXiv:2210.17123, J. Spectr. Theory 13 (2023), 1045–1055.
-
-The formalization establishes the absence of excited eigenvalues of the Fröhlich fiber Hamiltonian for weak-coupling and all momenta (|P|\leq 1/4). It was obtained with assistance from ChatGPT and Codex (OpenAI). The proofs do not follow the original arguments line by line, but include modifications made to facilitate formal verification. The expanded and modified natural-language proof blueprint (obtained by ChatGPT) is included in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf) and [LaTeX source](docs/Froehlich-v5.tex).
+The formalization establishes the absence of excited eigenvalues of the Fröhlich fiber Hamiltonian for weak coupling and all momenta `|P| ≤ 1/4`. It was obtained with assistance from ChatGPT and Codex (OpenAI). The proofs do not follow the original arguments line by line, but include modifications made to facilitate the formal verification. The expanded and modified natural-language proof blueprint is included in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf) and [LaTeX source](docs/Froehlich-v5.tex).
 
 ## Main result
 
-The designated theorem is [`Froehlich.main`](Froehlich/Nodes/MN03.lean), of type `MainStatement fiberHamiltonian`. Here \(H_g(P)\) denotes the self-adjoint Fröhlich fiber Hamiltonian, constructed within the formalization, and \(E_g(P)=\inf\sigma(H_g(P))\) its ground-state energy.
+The designated theorem is [`Froehlich.main`](Froehlich/Nodes/MN03.lean). Here `H_g(P)` denotes the self-adjoint Fröhlich fiber Hamiltonian, constructed within the formalization, and `E_g(P) = inf σ(H_g(P))` its ground-state energy.
 
-The theorem establishes the existence of a constant \(g_*>0\) such that, for every real coupling \(g\) with \(|g|<g_*\) and every momentum \(P\in\mathbb R^3\) with \(|P|\leq 1/4\), the following hold:
+The theorem establishes the existence of a constant `g_* > 0` such that, for every real coupling `g` with `|g| < g_*` and every momentum `P ∈ ℝ³` with `|P| ≤ 1/4`, the following hold:
 
-1. **Spectral equality:**
-   \[
-   \sigma(H_g(P))\cap(-\infty,E_g(0)+1)
-   =\{E_g(P)\}.
-   \]
+1. **Absence of excited eigenvalues:**
 
-2. **Ground-state existence:** There exists a nonzero \(\psi\in D(H_g(P))\) satisfying
-   \[
-   H_g(P)\psi=E_g(P)\psi.
-   \]
+   `σ(H_g(P)) ∩ (-∞, E_g(0) + 1) = {E_g(P)}`.
 
-Here \(H_g(P)\) denotes the self-adjoint Fröhlich fiber Hamiltonian, whose construction is also part of the Lean formalization. The formalization does not yet include the identification of \(E_g(0)+1\) as the bottom of the essential spectrum, the simplicity of the ground-state eigenvalue, or the extension of the absence of excited eigenvalues to arbitrary momenta using Dahlbæk's results. We expect to address these remaining results in future formalization projects.
+2. **Ground-state existence:** There exists a nonzero `ψ ∈ D(H_g(P))` satisfying
 
-| Mathematical object or claim | Lean declaration | Source file |
-| --- | --- | --- |
-| Exact theorem contract | `Froehlich.MainStatement` | [`Froehlich/TargetContract.lean`](Froehlich/TargetContract.lean) |
-| Main formal theorem | `Froehlich.main` | [`Froehlich/Nodes/MN03.lean`](Froehlich/Nodes/MN03.lean) |
-| Fröhlich form factor and UV cutoff | `fiberFormFactor`, `cutoffFormFactor` | [`Froehlich/Nodes/GW05.lean`](Froehlich/Nodes/GW05.lean) |
-| Limiting singular interaction form | `singularInteraction` | [`Froehlich/Nodes/FB02A.lean`](Froehlich/Nodes/FB02A.lean) |
-| Fiber form data and operator | `fiberFormData`, `fiberHamiltonian` | [`Froehlich/Nodes/GW06.lean`](Froehlich/Nodes/GW06.lean) |
-| Self-adjointness and abstract domain identity | `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`Froehlich/Nodes/GW06.lean`](Froehlich/Nodes/GW06.lean) |
-| Spectrum and ground energy | `realSpectrum`, `groundEnergy`, `HasEigenvector` | [`Froehlich/Nodes/DF01.lean`](Froehlich/Nodes/DF01.lean) |
+   `H_g(P)ψ = E_g(P)ψ`.
 
-For mathematical interpretation and scope, see [`docs/STATEMENT_GUIDE.md`](docs/STATEMENT_GUIDE.md).
+The formalization does not include the identification of `E_g(0) + 1` as the bottom of the essential spectrum (see [Møller, *The polaron revisited*](https://doi.org/10.1142/S0129055X0600267X) and [Lampart et al, Eq. (1.3)](https://arxiv.org/abs/2611.09586)), the simplicity of the ground-state eigenvalue (see [Theorem 1.1](https://arxiv.org/abs/2611.09586)), or the extension of the absence of excited eigenvalues to arbitrary momenta (see [Corollary 1.2](https://arxiv.org/abs/2611.09586)). We expect to address these results in future formalization projects.
+
+## Results
+
+The main theorem is proved in Lean 4 using Mathlib. Its proof uses only Lean's standard foundational axioms (`propext`, `Classical.choice`, `Quot.sound`). The project contains no `sorry` or custom mathematical axioms.
+
+The following table lists the main definitions and proved results underlying the construction of the Fröhlich fiber Hamiltonian and the proof of the main theorem, together with their corresponding Lean declarations and source files.
+
+| Mathematical object or result | Type | Lean declaration | Source file |
+| --- | --- | --- | --- |
+| Main theorem | Theorem (statement defined separately) | `Froehlich.main` | [`MN03.lean`](Froehlich/Nodes/MN03.lean) (proof), [`TargetContract.lean`](Froehlich/TargetContract.lean) (statement) |
+| Fröhlich form factor and UV cutoff | Definitions | `fiberFormFactor`, `cutoffFormFactor` | [`GW05.lean`](Froehlich/Nodes/GW05.lean) |
+| Singular interaction and cutoff convergence | Definition + theorem | `singularInteraction`, `cutoffInteraction_tendsto` | [`FB02A.lean`](Froehlich/Nodes/FB02A.lean) |
+| Fiber Hamiltonian, self-adjointness and domain | Definitions + theorems | `fiberFormData`, `fiberHamiltonian`, `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`GW06.lean`](Froehlich/Nodes/GW06.lean) |
+| Spectrum, ground-state energy and eigenvectors | Definitions | `realSpectrum`, `groundEnergy`, `HasEigenvector` | [`DF01.lean`](Froehlich/Nodes/DF01.lean) |
+
+For further details on the mathematical interpretation and scope, see [`docs/STATEMENT_GUIDE.md`](docs/STATEMENT_GUIDE.md).
 
 ## Verify
 
