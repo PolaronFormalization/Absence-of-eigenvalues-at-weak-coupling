@@ -31,7 +31,7 @@ The following table lists the main definitions and proved results underlying the
 
 | Mathematical object or result | Type | Lean declaration | Source file |
 | --- | --- | --- | --- |
-| Main theorem | Theorem (statement defined separately) | `Froehlich.main` | [`TargetContract.lean`](Froehlich/TargetContract.lean) (statement),[`MN03.lean`](Froehlich/Nodes/MN03.lean) (proof) |
+| Main theorem | Theorem | `Froehlich.main` | [`TargetContract.lean`](Froehlich/TargetContract.lean) (statement), [`MN03.lean`](Froehlich/Nodes/MN03.lean) (proof) |
 | Fröhlich form factor and UV cutoff | Definitions | `fiberFormFactor`, `cutoffFormFactor` | [`GW05.lean`](Froehlich/Nodes/GW05.lean) |
 | Singular interaction and cutoff convergence | Definition + theorem | `singularInteraction`, `cutoffInteraction_tendsto` | [`FB02A.lean`](Froehlich/Nodes/FB02A.lean) |
 | Fiber Hamiltonian, self-adjointness and domain | Definitions + theorems | `fiberFormData`, `fiberHamiltonian`, `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`GW06.lean`](Froehlich/Nodes/GW06.lean) |
