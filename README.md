@@ -23,8 +23,6 @@ The theorem establishes the existence of a constant `g_* > 0` such that, for eve
 
    `H_g(P)ψ = E_g(P)ψ`.
 
-The formalization does not include the identification of `E_g(0) + 1` as the bottom of the essential spectrum (see [Møller, *The polaron revisited*](https://doi.org/10.1142/S0129055X0600267X) and [Lampart et al, Eq. (1.3)](https://arxiv.org/abs/2611.09586)), the simplicity of the ground-state eigenvalue (see [Theorem 1.1](https://arxiv.org/abs/2611.09586)), or the extension of the absence of excited eigenvalues to arbitrary momenta (see [Corollary 1.2](https://arxiv.org/abs/2611.09586)). We expect to address these results in future formalization projects.
-
 ## Results
 
 The main theorem is proved in Lean 4 using Mathlib. Its proof uses only Lean's standard foundational axioms (`propext`, `Classical.choice`, `Quot.sound`). The project contains no `sorry` or custom mathematical axioms.
