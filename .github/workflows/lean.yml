@@ -1,0 +1,29 @@
+name: Lean verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Set up Lean and build both library targets
+        uses: leanprover/lean-action@fe408643ea7367d8c0404a8be3975bb145f5fb64 # v1.7.0
+        with:
+          auto-config: 'false'
+          use-mathlib-cache: 'true'
+          build: 'true'
+          build-args: 'GW:elabArts Froehlich:elabArts'
+          test: 'false'
+      - name: Print main theorem and its axioms
+        run: lake env lean -j1 verification/MN03FinalInterfaces.lean
+      - name: Check meaning-carrying definition fingerprints
+        run: lake env lean -j1 verification/MainDefinitionFingerprints.lean
