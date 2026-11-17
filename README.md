@@ -52,8 +52,6 @@ Instead, the formalized proof introduces ultraviolet-cutoff form factors and the
 
 The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. The functional-analytic framework from our separate [Lean formalization of their results](https://github.com/PolaronFormalization/GW-Froehlich-formalization) is incorporated into the present repository under [`GW/`](GW/). The fiber Hamiltonians are then constructed and their self-adjointness established in [`GW06.lean`](Froehlich/Nodes/GW06.lean).
 
-
-
 ## Build and check
 
 Install Lean with [elan](https://github.com/leanprover/elan). The project uses Lean `v4.36.0-rc2` (`lean-toolchain`), and the exact dependency revisions are pinned in `lake-manifest.json`.
@@ -83,18 +81,17 @@ The first command prints the main theorem `Froehlich.main` and its foundational 
 
 The complete project has also been successfully verified on [GitHub Actions](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions).
 
+## Repository layout
 
-## Mathematical and software structure
-
-- [`Froehlich/`](Froehlich/) and [`Froehlich.lean`](Froehlich.lean): fiber Hamiltonians, estimates, spectral reduction, and final theorem.
-- [`GW/`](GW/) and [`GW.lean`](GW.lean): retained Lean development based on Griesemer–Wünsch, *Self-Adjointness and Domain of the Fröhlich Hamiltonian*, [arXiv:1508.02533](https://arxiv.org/abs/1508.02533).
-- [`docs/`](docs/): mathematical proof blueprint and explanation of the paper-to-Lean correspondence.
-- [`verification/`](verification/) and [`scripts/`](scripts/): Lean statement/axiom inspection and reproducibility scripts.
-- [`.github/workflows/lean.yml`](.github/workflows/lean.yml): automatic build and axiom-report job for GitHub Actions.
-
-The Griesemer–Wünsch paper concerns the **full Hamiltonian**. Its form-operator framework is reused in the *separate construction of fiber Hamiltonians* in this project; the paper does not itself supply the fiber construction. The domain theorem here is an abstract quadratic-form representation identity, **not** an explicit Gross-transform description of the domain of a fiber Hamiltonian.
-
-The detailed blueprint `docs/Froehlich-v5.tex` was prepared as a natural-language mathematical guide for the formalization; it is not itself a kernel-checked certificate. Its references to internal preparation bundles reflect the archived development process. These historical bundles and logs were deliberately omitted from the public source release.
+| Path | Contents |
+| --- | --- |
+| [`Froehlich/`](Froehlich/) | Construction of the fiber Hamiltonians, spectral analysis, and proof of the main theorem |
+| [`GW/`](GW/) | Functional-analytic framework from the separate Griesemer–Wünsch formalization |
+| [`docs/`](docs/) | Detailed natural-language proof blueprint and supplementary documentation |
+| [`verification/`](verification/) | Main theorem, axiom, and definition checks |
+| [`scripts/`](scripts/) | Verification scripts |
+| [`.github/workflows/`](.github/workflows/) | GitHub Actions verification workflow |
+```
 
 ## Source provenance and limits
 
