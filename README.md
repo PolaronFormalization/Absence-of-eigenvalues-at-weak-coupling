@@ -52,8 +52,6 @@ Instead, the formalized proof introduces ultraviolet-cutoff form factors and the
 
 The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. The functional-analytic framework from our separate [Lean formalization of their results](https://github.com/PolaronFormalization/GW-Froehlich-formalization) is incorporated into the present repository under [`GW/`](GW/). The fiber Hamiltonians are then constructed and their self-adjointness established in [`GW06.lean`](Froehlich/Nodes/GW06.lean).
 
-The operator domain is characterized through the abstract quadratic-form identity; no explicit Gross-transform domain characterization for the fiber Hamiltonians is claimed.
-
 ## How to verify
 
 **Requirements:** Lean installed via [elan](https://lean-lang.org/install/), Git, and a working network connection for initial dependencies. The project pins Lean `leanprover/lean4:v4.36.0-rc2` in `lean-toolchain` and Mathlib at commit `9bac2d0692944a775113f7c130fd5e5b4608a854` in the unchanged Lake files.
