@@ -52,6 +52,22 @@ Instead, the formalized proof introduces ultraviolet-cutoff form factors and the
 
 The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. The functional-analytic framework from our separate [Lean formalization of their results](https://github.com/PolaronFormalization/GW-Froehlich-formalization) is incorporated into the present repository under [`GW/`](GW/). The fiber Hamiltonians are then constructed and their self-adjointness established in [`GW06.lean`](Froehlich/Nodes/GW06.lean).
 
+## Build and verification
+
+Install Lean using [elan](https://github.com/leanprover/elan). The Lean version and exact dependency revisions are fixed in `lean-toolchain` and `lake-manifest.json`.
+
+From the repository root, run:
+
+```bash
+lake exe cache get
+bash scripts/check.sh
+```
+
+The verification script builds the `GW` and `Froehlich` libraries, checks the main theorem `Froehlich.main`, and reports its axioms and the definitions used in its statement.
+
+The complete Lean project has also been successfully compiled on GitHub Actions (9,202 build jobs). The corresponding verification runs are available under [Actions](https://github.com/PolaronFormalization/absence-weak-coupling-eigenvalues/actions).
+
+
 ## How to verify
 
 **Requirements:** Lean installed via [elan](https://lean-lang.org/install/), Git, and a working network connection for initial dependencies. The project pins Lean `leanprover/lean4:v4.36.0-rc2` in `lean-toolchain` and Mathlib at commit `9bac2d0692944a775113f7c130fd5e5b4608a854` in the unchanged Lake files.
