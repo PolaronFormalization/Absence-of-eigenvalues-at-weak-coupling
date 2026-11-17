@@ -81,8 +81,7 @@ The first command prints the main theorem `Froehlich.main` and its foundational 
 
 The complete project has also been successfully verified on [GitHub Actions](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions).
 
-## License and attribution
 
-The repository is prepared for release under the **Apache License, Version 2.0** (`Apache-2.0`); see [`LICENSE`](LICENSE). This license covers contributions whose copyright holders have authorized release under these terms. The original research papers cited above are referenced, not relicensed here.
+## License and citation
 
-The retained `GW/` development originated in a **separate Lean formalization** based on Griesemer–Wünsch. Its original release archive did not specify an open-source license. **Before publishing this repository**, the responsible copyright holder(s) must confirm that the retained `GW` source may be distributed under Apache-2.0 (or provide its existing license and attribution terms). Adding a repository-level license does not itself grant rights over someone else's code. Please cite the mathematical papers when using their results.
+The Lean code is released under the Apache License 2.0 license (see [`LICENSE`](LICENSE)). The mathematical results are described in the papers cited above. If you use this formalization, please cite the corresponding papers and reference this repository.
