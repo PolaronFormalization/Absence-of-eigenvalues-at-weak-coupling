@@ -86,12 +86,11 @@ The complete project has also been successfully verified on [GitHub Actions](htt
 | Path | Contents |
 | --- | --- |
 | [`Froehlich/`](Froehlich/) | Construction of the fiber Hamiltonians, spectral analysis, and proof of the main theorem |
-| [`GW/`](GW/) | Functional-analytic framework from the separate Griesemer–Wünsch formalization |
+| [`GW/`](GW/) | Functional-analytic framework for the Fröhlich Hamiltonian |
 | [`docs/`](docs/) | Detailed natural-language proof blueprint and supplementary documentation |
 | [`verification/`](verification/) | Main theorem, axiom, and definition checks |
 | [`scripts/`](scripts/) | Verification scripts |
 | [`.github/workflows/`](.github/workflows/) | GitHub Actions verification workflow |
-```
 
 ## Source provenance and limits
 
