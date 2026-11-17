@@ -53,18 +53,24 @@ Instead, the formalized proof introduces ultraviolet-cutoff form factors and the
 The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. The functional-analytic framework from our separate [Lean formalization of their results](https://github.com/PolaronFormalization/GW-Froehlich-formalization) is incorporated into the present repository under [`GW/`](GW/). The fiber Hamiltonians are then constructed and their self-adjointness established in [`GW06.lean`](Froehlich/Nodes/GW06.lean).
 
 
+
 ## Build and check
 
-To reproduce the formal verification on your own computer, first install Lean using [elan](https://github.com/leanprover/elan), the Lean toolchain manager. The project uses Lean `v4.36.0-rc2`, specified in `lean-toolchain`. The exact revisions of Mathlib and all other dependencies are recorded in `lake-manifest.json`. These versions are selected automatically when working with the project.
+Install Lean with [elan](https://github.com/leanprover/elan). The project uses Lean `v4.36.0-rc2` (`lean-toolchain`), and the exact dependency revisions are pinned in `lake-manifest.json`.
 
-Next, download the repository to your computer. To prepare the dependencies and compile the formalization, run from the root repository:
+Clone the repository and enter its directory:
 
 ```bash
-lake exe cache get
-lake build GW:elabArts Froehlich:elabArts
+git clone https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling.git
+cd Absence-of-eigenvalues-at-weak-coupling
 ```
 
-The first command downloads precompiled Mathlib files, avoiding the need to compile Mathlib from source. The second builds the `GW` and `Froehlich` libraries, including the proof of the main theorem `Froehlich.main`. A successful build confirms that Lean accepts the formalized proofs.
+Then prepare the dependencies and build the formalization:
+
+```bash
+lake exe cache get   # Download precompiled Mathlib files
+lake build GW:elabArts Froehlich:elabArts   # Build the formalization
+```
 
 To inspect the main theorem, its axioms, and the relevant definitions, run:
 
@@ -73,49 +79,10 @@ lake env lean -j1 verification/MN03FinalInterfaces.lean
 lake env lean -j1 verification/MainDefinitionFingerprints.lean
 ```
 
-The first command displays the main theorem and reports the axioms on which its proof depends. The second checks and reports the definitions recorded in the project's verification file.
+The first command prints the main theorem `Froehlich.main` and its foundational axioms (`propext`, `Classical.choice`, `Quot.sound`). The second checks the definitions underlying the formalized statement.
 
-The complete formalization has also been successfully compiled and verified on GitHub's servers. The corresponding runs are available under [GitHub Actions](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions).
+The complete project has also been successfully verified on [GitHub Actions](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions).
 
-
-## Build and verification
-
-Install Lean using [elan](https://github.com/leanprover/elan). The Lean version and exact dependency revisions are fixed in `lean-toolchain` and `lake-manifest.json`.
-
-From the repository root, run:
-
-```bash
-lake exe cache get
-bash scripts/check.sh
-```
-
-The verification script builds the `GW` and `Froehlich` libraries, checks the main theorem `Froehlich.main`, and reports its axioms and the definitions used in its statement.
-
-The complete Lean project has also been successfully compiled on GitHub Actions (9,202 build jobs). The corresponding verification runs are available under [Actions](https://github.com/PolaronFormalization/absence-weak-coupling-eigenvalues/actions).
-
-
-## How to verify
-
-**Requirements:** Lean installed via [elan](https://lean-lang.org/install/), Git, and a working network connection for initial dependencies. The project pins Lean `leanprover/lean4:v4.36.0-rc2` in `lean-toolchain` and Mathlib at commit `9bac2d0692944a775113f7c130fd5e5b4608a854` in the unchanged Lake files.
-
-From the repository root:
-
-```sh
-lake exe cache get
-bash scripts/check.sh
-```
-
-The script builds the `GW` and `Froehlich` elaboration targets, then asks Lean to print the main theorem, its transitive axioms, and fingerprints of the key definitions. To run the individual checks:
-
-```sh
-lake build GW:elabArts Froehlich:elabArts
-lake env lean -j1 verification/MN03FinalInterfaces.lean
-lake env lean -j1 verification/MainDefinitionFingerprints.lean
-```
-
-The source project's recorded axiom inspection reports only Lean's standard foundational axioms `propext`, `Classical.choice`, and `Quot.sound` for `Froehlich.main`. A text scan of the retained production Lean files in this release found no `sorry`, `admit`, custom `axiom`, `unsafe`, `opaque`, or `native_decide`. Please rerun the commands above to inspect the theorem in your environment.
-
-**Verification status:** The author reported a successful local build of the original project (9,202 jobs), followed by a direct successful Lean check of the main theorem file. This trimmed release preserves the Lean source files and locked dependencies byte-for-byte, but has *not* been freshly compiled in the environment used to package it. The included GitHub Actions workflow is a proposed reproducibility check; its first run should be inspected after publication. No external independent review is claimed.
 
 ## Mathematical and software structure
 
