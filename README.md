@@ -37,13 +37,23 @@ The following table lists the main definitions and proved results underlying the
 | Fiber Hamiltonian, self-adjointness and domain | Definitions + theorems | `fiberFormData`, `fiberHamiltonian`, `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`GW06.lean`](Froehlich/Nodes/GW06.lean) |
 | Spectrum, ground-state energy and eigenvectors | Definitions | `realSpectrum`, `groundEnergy`, `HasEigenvector` | [`DF01.lean`](Froehlich/Nodes/DF01.lean) |
 
-The precise statement of the main theorem is defined in [`TargetContract.lean`](Froehlich/TargetContract.lean) and proved for the constructed Fröhlich fiber Hamiltonian in [`MN03.lean`](Froehlich/Nodes/MN03.lean). The construction of the Hamiltonian and the definitions of the spectral quantities are implemented in the files listed above.
+Notes: 
 
-A detailed mathematical account of the proofs, including the modifications made for formal verification, is provided in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf).
+The precise statement of the main theorem is defined in [`TargetContract.lean`](Froehlich/TargetContract.lean) and proved for the constructed Fröhlich fiber Hamiltonian in [`MN03.lean`](Froehlich/Nodes/MN03.lean).
 
-For further details on the mathematical interpretation and scope, see [`docs/STATEMENT_GUIDE.md`](docs/STATEMENT_GUIDE.md).
+The declaration Froehlich.MainStatement in Froehlich/TargetContract.lean is parameterized by a family of complex-linear, possibly unbounded operators H. It states that there exists gStar > 0 such that for every g : ℝ and P : GW.Space, the conditions |g| < gStar and ‖P‖ ≤ 1/4 imply both:
 
-## Verify
+    realSpectrum (H g P) ∩ Set.Iio (groundEnergy (H g 0) + 1) = {groundEnergy (H g P)};
+    HasEigenvector (H g P) (groundEnergy (H g P)).
+
+The theorem Froehlich.main : MainStatement fiberHamiltonian in Froehlich/Nodes/MN03.lean supplies the constructed physical operator family as the parameter. GW.Space is Euclidean ℝ³, and GW.Fock.Carrier is the bosonic Fock space.
+
+realSpectrum is defined from the existence of an appropriate bounded two-sided resolvent inverse, groundEnergy is the infimum of this real spectrum, and HasEigenvector asserts the existence of a nonzero vector in the operator domain satisfying the eigenvalue equation. These are implemented in Froehlich/Nodes/DF01.lean.
+Why the fiber operator is concrete
+
+The formal form factor of the Hamiltonian is fiberFormFactor g k = g / ‖k‖. The uncut form factor is not square-integrable, so ordinary field-operator construction is not available. Instead the proof defines UV-cutoff form factors and bounded cutoff interaction forms, proves their Cauchy convergence on the free-energy form space, and defines the limit singularInteraction (Froehlich/Nodes/FB02A.lean). The fiber form data (Froehlich/Nodes/GW06.lean) package the closed, semibounded quadratic form and construct the associated self-adjoint operator as fiberHamiltonian using the retained Griesemer–Wünsch functional-analytic infrastructure. The fiberHamiltonian_domain theorem expresses the abstract form-identity characterization; no Gross-transform domain formula for these momentum fibers is claimed.
+
+## How to verify
 
 **Requirements:** Lean installed via [elan](https://lean-lang.org/install/), Git, and a working network connection for initial dependencies. The project pins Lean `leanprover/lean4:v4.36.0-rc2` in `lean-toolchain` and Mathlib at commit `9bac2d0692944a775113f7c130fd5e5b4608a854` in the unchanged Lake files.
 
