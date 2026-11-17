@@ -57,16 +57,7 @@ The resulting closed, semibounded quadratic form determines the self-adjoint ope
 
 To reproduce the formal verification on your own computer, first install Lean using [elan](https://github.com/leanprover/elan), the Lean toolchain manager. The project uses Lean `v4.36.0-rc2`, specified in `lean-toolchain`. The exact revisions of Mathlib and all other dependencies are recorded in `lake-manifest.json`. These versions are selected automatically when working with the project.
 
-Next, download the repository to your computer using [Git](https://git-scm.com/downloads). Open a terminal and run:
-
-```bash
-git clone https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling.git
-cd Absence-of-eigenvalues-at-weak-coupling
-```
-
-The first command creates a local copy of the repository, including all Lean source files and project configuration. The second command changes the terminal's working directory to this downloaded project folder. All subsequent commands should be executed from this directory.
-
-To prepare the dependencies and compile the formalization, run:
+Next, download the repository to your computer. To prepare the dependencies and compile the formalization, run from the root repository:
 
 ```bash
 lake exe cache get
@@ -82,7 +73,7 @@ lake env lean -j1 verification/MN03FinalInterfaces.lean
 lake env lean -j1 verification/MainDefinitionFingerprints.lean
 ```
 
-The first command displays the main theorem and reports the axioms on which its proof depends. The second checks and reports the definitions recorded in the project's verification file. The main theorem uses only Lean's standard foundational axioms (`propext`, `Classical.choice`, `Quot.sound`).
+The first command displays the main theorem and reports the axioms on which its proof depends. The second checks and reports the definitions recorded in the project's verification file.
 
 The complete formalization has also been successfully compiled and verified on GitHub's servers. The corresponding runs are available under [GitHub Actions](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions).
 
