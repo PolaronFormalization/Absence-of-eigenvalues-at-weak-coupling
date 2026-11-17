@@ -9,7 +9,7 @@ A Lean 4 / Mathlib formalization of the main results from
 
 This formalization project establishes the absence of excited eigenvalues of the Fröhlich fiber Hamiltonian for weak coupling and all momenta `|P| ≤ 1/4`. It was obtained with assistance from ChatGPT and Codex (OpenAI). The proofs do not follow the original arguments line by line, but include modifications made to facilitate the formal verification. An expanded and modified natural-language proof blueprint is included in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf).
 
-## Main result
+## Main theorem
 
 The designated theorem is [`Froehlich.main`](Froehlich/Nodes/MN03.lean). Here `H_g(P)` denotes the self-adjoint Fröhlich fiber Hamiltonian, constructed within the formalization, and `E_g(P) = inf σ(H_g(P))` its ground-state energy.
 
