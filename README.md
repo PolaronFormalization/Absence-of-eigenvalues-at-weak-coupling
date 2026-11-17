@@ -48,7 +48,7 @@ The definitions `realSpectrum`, `groundEnergy`, and `HasEigenvector` are impleme
 
 The construction of the fiber Hamiltonian is part of the formalization. The Fröhlich form factor `fiberFormFactor g k = g / ‖k‖` is not square-integrable, so the interaction cannot be defined directly as an ordinary field operator.
 
-Instead, the development introduces ultraviolet-cutoff form factors and the corresponding interaction forms, proves their convergence on the free-energy form space, and defines the limiting singular interaction `singularInteraction` in [`FB02A.lean`](Froehlich/Nodes/FB02A.lean).
+Instead, the formalized proof introduces ultraviolet-cutoff form factors and the corresponding interaction forms, proves their convergence on the free-energy form space, and defines the limiting singular interaction `singularInteraction` in [`FB02A.lean`](Froehlich/Nodes/FB02A.lean).
 
 The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. It reuses functional-analytic machinery from their separately formalized results, included here in [`GW/`](GW/), while the fiber Hamiltonians themselves are constructed in the present development.
 
