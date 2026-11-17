@@ -1,19 +1,33 @@
-# Lean formalization of the weak-coupling Fröhlich spectral theorem
+# Lean formalization of the absence of excited eigenvalues for the Fröhlich polaron at weak coupling
 
-A Lean 4 / Mathlib formalization of a spectral result for the three-dimensional Fröhlich polaron, related to the main theorem in
+A Lean 4 formalization of a spectral result for the three-dimensional Fröhlich fiber Hamiltonian, based on the works
 
-> D. Mitrouskas, *Absence of Excited Bound States for All Fibers of the Fröhlich Polaron at Weak Coupling*, [arXiv:2611.09586](https://arxiv.org/abs/2611.09586).
+>D. Mitrouskas, Absence of Excited Bound States for All Fibers of the Fröhlich Polaron at Weak Coupling, arXiv:2611.09586.
 
-The formalization includes the zero-momentum case treated by Seiringer, within the closed momentum ball of radius `1/4`. The proof is not a line-by-line translation of the paper. It was developed with assistance from ChatGPT and OpenAI Codex; the modified natural-language proof blueprint is included in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf) and [LaTeX source](docs/Froehlich-v5.tex).
+and
+
+>R. Seiringer, Absence of excited eigenvalues for Fröhlich type polaron models at weak coupling, arXiv:2210.17123, J. Spectr. Theory 13 (2023), 1045–1055.
+
+The formalization establishes the absence of excited eigenvalues of the Fröhlich fiber Hamiltonian for weak-coupling and all momenta (|P|\leq 1/4). It was obtained with assistance from ChatGPT and Codex (OpenAI). The proofs do not follow the original arguments line by line, but include modifications made to facilitate formal verification. The expanded and modified natural-language proof blueprint (obtained by ChatGPT) is included in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf) and [LaTeX source](docs/Froehlich-v5.tex).
 
 ## Main result
 
-The designated theorem is [`Froehlich.main`](Froehlich/Nodes/MN03.lean), of type `MainStatement fiberHamiltonian`. It proves the existence of a single `gStar > 0` such that, for every real coupling `g` with `|g| < gStar` and every momentum `P ∈ ℝ³` with `‖P‖ ≤ 1/4`, both conclusions hold:
+The designated theorem is [`Froehlich.main`](Froehlich/Nodes/MN03.lean), of type `MainStatement fiberHamiltonian`. Here \(H_g(P)\) denotes the self-adjoint Fröhlich fiber Hamiltonian, constructed within the formalization, and \(E_g(P)=\inf\sigma(H_g(P))\) its ground-state energy.
 
-1. `σ(H_g(P)) ∩ (-∞, E_g(0) + 1) = {E_g(P)}`, where `E_g(P) = inf σ(H_g(P))`;
-2. `E_g(P)` has a nonzero eigenvector in the operator domain of `H_g(P)`.
+The theorem establishes the existence of a constant \(g_*>0\) such that, for every real coupling \(g\) with \(|g|<g_*\) and every momentum \(P\in\mathbb R^3\) with \(|P|\leq 1/4\), the following hold:
 
-Here `H_g(P)` is the self-adjoint Fröhlich **fiber** Hamiltonian constructed in this repository, not an abstract operator assumed to have the desired properties. The theorem covers zero momentum and zero coupling. It does **not** establish ground-state simplicity, the identity of the essential-spectrum threshold, or the Dahlbæk-based all-momentum corollary.
+1. **Spectral equality:**
+   \[
+   \sigma(H_g(P))\cap(-\infty,E_g(0)+1)
+   =\{E_g(P)\}.
+   \]
+
+2. **Ground-state existence:** There exists a nonzero \(\psi\in D(H_g(P))\) satisfying
+   \[
+   H_g(P)\psi=E_g(P)\psi.
+   \]
+
+Here \(H_g(P)\) denotes the self-adjoint Fröhlich fiber Hamiltonian, whose construction is also part of the Lean formalization. The formalization does not yet include the identification of \(E_g(0)+1\) as the bottom of the essential spectrum, the simplicity of the ground-state eigenvalue, or the extension of the absence of excited eigenvalues to arbitrary momenta using Dahlbæk's results. We expect to address these remaining results in future formalization projects.
 
 | Mathematical object or claim | Lean declaration | Source file |
 | --- | --- | --- |
