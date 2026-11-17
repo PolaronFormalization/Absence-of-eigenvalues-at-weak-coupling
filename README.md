@@ -50,7 +50,7 @@ The construction of the fiber Hamiltonian is part of the formalization. The Frö
 
 Instead, the formalized proof introduces ultraviolet-cutoff form factors and the corresponding interaction forms, proves their convergence on the free-energy form space, and defines the limiting singular interaction `singularInteraction` in [`FB02A.lean`](Froehlich/Nodes/FB02A.lean).
 
-The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. It reuses functional-analytic machinery from their separately formalized results, included here in [`GW/`](GW/), while the fiber Hamiltonians themselves are constructed in the present development.
+The resulting closed, semibounded quadratic form determines the self-adjoint operator `fiberHamiltonian`, constructed in [`GW06.lean`](Froehlich/Nodes/GW06.lean). This construction follows the quadratic-form approach of [Griesemer and Wünsch (2015)](https://arxiv.org/abs/1508.02533) for the full Fröhlich Hamiltonian. It reuses functional-analytic machinery from their separately formalized results, included here in [`GW/`](GW/), while the fiber Hamiltonians themselves are constructed in the present development.
 
 The operator domain is characterized through the abstract quadratic-form identity; no explicit Gross-transform domain characterization for the fiber Hamiltonians is claimed.
 
