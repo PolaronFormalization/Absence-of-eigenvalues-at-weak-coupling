@@ -81,21 +81,6 @@ The first command prints the main theorem `Froehlich.main` and its foundational 
 
 The complete project has also been successfully verified on [GitHub Actions](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions).
 
-## Repository layout
-
-| Path | Contents |
-| --- | --- |
-| [`Froehlich/`](Froehlich/) | Construction of the fiber Hamiltonians, spectral analysis, and proof of the main theorem |
-| [`GW/`](GW/) | Functional-analytic framework for the Fröhlich Hamiltonian |
-| [`docs/`](docs/) | Detailed natural-language proof blueprint and supplementary documentation |
-| [`verification/`](verification/) | Main theorem, axiom, and definition checks |
-| [`scripts/`](scripts/) | Verification scripts |
-| [`.github/workflows/`](.github/workflows/) | GitHub Actions verification workflow |
-
-## Source provenance and limits
-
-`docs/SOURCE_SHA256.txt` records the SHA-256 hashes of all retained Lean, configuration, verification, and blueprint files. They are unchanged from the supplied pre-release archive. This repository does not include build caches (`.lake`), duplicate GW input bundles, machine-specific compilation wrappers, internal planning logs, or Codex session files. The root import `Froehlich.lean` retains one historical comment about MN03 not yet being implemented; the comment is outdated, but the file is kept byte-identical to the locally checked snapshot. The final theorem is present in `Froehlich/Nodes/MN03.lean`.
-
 ## License and attribution
 
 The repository is prepared for release under the **Apache License, Version 2.0** (`Apache-2.0`); see [`LICENSE`](LICENSE). This license covers contributions whose copyright holders have authorized release under these terms. The original research papers cited above are referenced, not relicensed here.
