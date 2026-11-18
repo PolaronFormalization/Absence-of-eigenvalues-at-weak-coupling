@@ -1,4 +1,4 @@
-# Lean formalization of the absence of excited eigenvalues for the Fröhlich polaron at weak coupling
+# Absence of excited eigenvalues for the Fröhlich polaron at weak coupling -- Lean 4 formalization
 
 [![Lean verification](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions/workflows/lean.yml/badge.svg)](https://github.com/PolaronFormalization/Absence-of-eigenvalues-at-weak-coupling/actions/workflows/lean.yml)
 
