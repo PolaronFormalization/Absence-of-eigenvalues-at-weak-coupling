@@ -29,7 +29,7 @@ The theorem establishes the existence of a constant `g_* > 0` such that, for eve
 We note that the formalization does **not** establish:
 
    - Simplicity of the ground-state eigenvalue
-   - Identification of the essential spectrum with `[E_g(0)+1,\infty))`
+   - Identification of the essential spectrum with `[E_g(0)+1,\infty)`
    - The all-momentum statement of Corollary 1.2
    - The general class of Fröhlich-type models covered by Seiringer's paper
 
