@@ -33,8 +33,8 @@ The following table lists the main definitions and proved results underlying the
 | --- | --- | --- | --- |
 | Main theorem | Theorem | `Froehlich.main` | [`TargetContract.lean`](Froehlich/TargetContract.lean) (statement), [`MN03.lean`](Froehlich/Nodes/MN03.lean) (proof) |
 | Fröhlich form factor and UV cutoff | Definitions | `fiberFormFactor`, `cutoffFormFactor` | [`GW05.lean`](Froehlich/Nodes/GW05.lean) |
-| Singular interaction and cutoff convergence | Definition + theorem | `singularInteraction`, `cutoffInteraction_tendsto` | [`FB02A.lean`](Froehlich/Nodes/FB02A.lean) |
-| Fiber Hamiltonian, self-adjointness and domain | Definitions + theorems | `fiberFormData`, `fiberHamiltonian`, `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`GW06.lean`](Froehlich/Nodes/GW06.lean) |
+| Singular interaction and cutoff convergence | Definition + Theorem | `singularInteraction`, `cutoffInteraction_tendsto` | [`FB02A.lean`](Froehlich/Nodes/FB02A.lean) |
+| Fiber Hamiltonian, self-adjointness and domain | Definitions + Theorems | `fiberFormData`, `fiberHamiltonian`, `fiberHamiltonian_selfadjoint`, `fiberHamiltonian_domain` | [`GW06.lean`](Froehlich/Nodes/GW06.lean) |
 | Spectrum, ground-state energy and eigenvectors | Definitions | `realSpectrum`, `groundEnergy`, `HasEigenvector` | [`DF01.lean`](Froehlich/Nodes/DF01.lean) |
 
 
