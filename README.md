@@ -10,7 +10,7 @@ A Lean 4 / Mathlib formalization of the main results from
 
 This formalization project proves the absence of excited eigenvalues of the Fröhlich fiber Hamiltonian for weak coupling and all momenta `|P| ≤ 1/4`. The code was obtained with assistance from ChatGPT and Codex. The proofs do not follow the original arguments line by line, but include modifications made to facilitate the formal verification. An expanded and modified natural-language proof blueprint is included in [`docs/Froehlich-v5.pdf`](docs/Froehlich-v5.pdf).
 
-## Main theorem
+## Scope of the formalization
 
 The designated theorem is [`Froehlich.main`](Froehlich/Nodes/MN03.lean). Here `H_g(P)` denotes the self-adjoint Fröhlich fiber Hamiltonian, constructed within the formalization, and `E_g(P) = inf σ(H_g(P))` its ground-state energy.
 
@@ -23,6 +23,14 @@ The theorem establishes the existence of a constant `g_* > 0` such that, for eve
 2. **Existence of a ground-state:** There exists a nonzero `ψ ∈ D(H_g(P))` satisfying
 
    `H_g(P)ψ = E_g(P)ψ`.
+
+
+We note that the formalization does **not** establish:
+
+   - Simplicity of the ground-state eigenvalue
+   - Identification of the essential spectrum with ([E_g(0)+1,\infty))
+   - The all-momentum statement of Corollary 1.2
+   - The general class of Fröhlich-type models covered by Seiringer's paper
 
 ## Results
 
