@@ -25,6 +25,7 @@ The theorem establishes the existence of a constant `g_* > 0` such that, for eve
    `H_g(P)ψ = E_g(P)ψ`.
 
 
+
 We note that the formalization does **not** establish:
 
    - Simplicity of the ground-state eigenvalue
